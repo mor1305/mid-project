@@ -1,0 +1,46 @@
+.MainNav {
+  width: 100%;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  margin-top: 1rem ;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 33%;
+}
+
+.MainNav .material-symbols-outlined:hover {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  border-radius: 10%;
+}
+
+.MainNav .logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.MainNav h1 {
+  font-family: 'Lexend Zetta', sans-serif;
+}
+
+.MainNav .icon {
+  background: url('../../../../../public/favicon.png') center center/cover;
+  height: 30px;
+  width: 30px;
+}
+
+.MainNav .SearchBar {
+  display: flex;
+  justify-content: flex-end;
+  width: 33%
+}
