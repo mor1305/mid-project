@@ -16,7 +16,7 @@ export default function Product({match: {params : {id}}}) {
     if (currentProduct.length > 0 && wishList.length > 0  ) {
       checkIfOnTheList(currentProduct[0].id, wishList, setIsOnWishList)
     }
-    else if (currentProduct.length > 0 && shoppingBag.length > 0  ) {
+    if (currentProduct.length > 0 && shoppingBag.length > 0  ) {
       checkIfOnTheList(currentProduct[0].id, shoppingBag, setIsOnShoppingBag)
     }
   }

@@ -16,7 +16,7 @@ const Table = ({setIsShoppingBagEmpty}) => {
     // console.log(product)
     const updatedShoppingBag = shoppingBag.filter(item => item.id !== product.id)
     setShoppingBag(updatedShoppingBag)
-    setIsOnShoppingBag(false)
+    // setIsOnShoppingBag(false)
   }
 
   const MyTable = () => {
