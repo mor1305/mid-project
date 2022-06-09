@@ -28,30 +28,3 @@
   gap: 1rem;
   line-height: 2rem;
 }
-
-.Product button {
-  font-size: 1rem;
-  border: 1px solid;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  height: 50px;
-}
-
-.white-button {
-  background-color: white;
-  border-color: black;
-}
-
-.white-button:hover {
-  background-color: #f4f4f4;
-  border-color: #f4f4f4;
-}
-
-.black-button {
-  color: white;
-  background-color: black;
-  border-color: black;
-}

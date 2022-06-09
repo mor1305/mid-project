@@ -1,0 +1,20 @@
+.shopping-bag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#confirm {
+  font-size: 1rem;
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 50px;
+  width: 15rem;
+}

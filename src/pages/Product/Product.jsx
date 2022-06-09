@@ -1,33 +1,48 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import { useData } from "../../context/Context"
 import Button from "./components/Button/Button"
 import "./product.css"
 
 export default function Product({match: {params : {id}}}) {
-  const [isInWishList, setIsInWishList] = useState()
-  const {productsData, wishList, setWishList} = useData()
+  const {
+    productsData, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, 
+    wishList, setWishList, shoppingBag, setShoppingBag, setIsOnShoppingBag 
+  } = useData()
+  // const {productsData, handleWishList, isOnWishList, checkIfOnTheList, wishList } = useData()
   const currentProduct = productsData.filter(product => product.id === parseInt(id))
-  const updatedWishList = [...wishList]
-
-  const handleClick = () => {
-    // setIsInWishList(false)
-    if (currentProduct.length > 0 && updatedWishList.length === 0) {
-      updatedWishList.push(currentProduct[0])
-      setIsInWishList(true)
-      setWishList(updatedWishList)
-    } else if (currentProduct.length) {
-      let checkIfOnTheList = updatedWishList.filter(pro => pro.id === parseInt(id))
-      if (checkIfOnTheList.length === 0) {
-        updatedWishList.push(currentProduct[0])
-        setIsInWishList(true)
-        setWishList(updatedWishList)
-      } else {
-        const remainingItems = updatedWishList.filter(pro => pro.id !== parseInt(id))
-        setIsInWishList(false)
-        setWishList(remainingItems)
-      }
+  
+  useEffect(() => {
+    if (currentProduct.length > 0 && wishList.length > 0) {
+      checkIfOnTheList(currentProduct[0].id, wishList, setIsOnWishList)
     }
   }
+  ,[])
+
+  // useEffect(() => {
+  //   if (currentProduct.length > 0 && wishList.length > 0) {
+  //     checkIfOnTheList(currentProduct[0].id)
+  //   }
+  // }
+  // ,[])
+
+  const handleWishListClick = (e) => {
+    if (currentProduct.length > 0) {
+      handleList(currentProduct[0].id, wishList, setWishList, setIsOnWishList, e.target.id)
+    }
+  }
+
+  const handleShoppingBagClick = (e) => {
+    console.log(e.target.id);
+    if (currentProduct.length > 0) {
+      handleList(currentProduct[0].id, shoppingBag, setShoppingBag, setIsOnShoppingBag, e.target.id)
+    }
+  }
+
+  // const handleClick = () => {
+  //   if (currentProduct.length > 0) {
+  //     handleWishList(currentProduct[0].id)
+  //   }
+  // }
 
   const renderedProduct = () => {
     if (currentProduct.length > 0) {
@@ -43,24 +58,27 @@ export default function Product({match: {params : {id}}}) {
             <p>SKU: {id}</p>
            </div>
            <Button 
-              handleClick={handleClick} 
+              handleClick={handleShoppingBagClick} 
+              id="shoppingBag"
               className="black-button"
               text="Add To Bag"
               iconName=""
               />
 
-           {!isInWishList &&
+           {!isOnWishList &&
               <Button 
-              handleClick={handleClick} 
+              handleClick={handleWishListClick} 
+              id="wishList"
               className="white-button"
               text="Add To Wishlist"
               iconName="favorite"
               />
            }
 
-           {isInWishList &&
+           {isOnWishList &&
               <Button 
-              handleClick={handleClick} 
+              handleClick={handleWishListClick} 
+              id="wishList"
               className="black-button"
               text="Remove From Wishlist"
               iconName="favorite"

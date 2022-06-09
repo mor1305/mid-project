@@ -23,7 +23,8 @@ export default function Navbar() {
   return (
   <div className="Navbar">
     <nav>
-     {renderedCategories()}
+     {categoriesData? renderedCategories(): "Loading"}
+     {/* {renderedCategories()} */}
     </nav>
   </div>
   )

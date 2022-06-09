@@ -5,7 +5,7 @@ import SearchBar from "../SearchBar/SearchBar";
 
 export default function MainNav() {
 
-  const {wishList} = useData()
+  const { wishList, shoppingBag} = useData()
 
   return (
   <div className="MainNav">
@@ -20,6 +20,7 @@ export default function MainNav() {
         </Link>
         <Link to="/shopping-bag">
          <span className="material-symbols-outlined">shopping_bag</span>
+          <span>{shoppingBag.length > 0 && <>{shoppingBag.length}</>}</span>
         </Link>
       </div>
       <Link to="/">

@@ -12,7 +12,44 @@ export function DataProvider({children}) {
   const [productsData, setProductsData] = useState([])
   const [categoriesData, setCategoriesData] = useState([])
   const [wishList, setWishList] = useState([])
-  
+  const [isOnWishList, setIsOnWishList] = useState(false)
+  const [shoppingBag, setShoppingBag] = useState([])
+  const [isOnshoppingBag, setIsOnShoppingBag] = useState(false)
+
+  const checkIfOnTheList = (productId, list, setIsOnList) => {
+    if (list.filter(product => parseInt(product.id) === parseInt(productId)).length ===0) {
+      setIsOnList(false)
+      return true
+    } else {
+      setIsOnList(true)
+      return false
+    }
+  }
+
+  const handleList = (productId, list, setList, setIsOnList, elementId ) => {
+    // setIsOnWishList(false)
+    const updatedList = [...list]
+    if(list.length === 0) {
+      setIsOnList(true)
+      updatedList.push(productsData.filter(product => parseInt(product.id) === parseInt(productId))[0])
+      setList(updatedList)
+      return true
+
+    } else if (checkIfOnTheList(productId, list, setIsOnList)) {
+      setIsOnList(true)
+      updatedList.push(productsData.filter(product => parseInt(product.id) === parseInt(productId))[0])
+      setList(updatedList)
+      return true
+
+    } else {
+      setIsOnList(false)
+      const remainingItems = updatedList.filter(pro => pro.id !== parseInt(productId))
+      setList(remainingItems)
+      return false
+
+    }
+  }
+
   useEffect( () => {
     async function getData() {
       try {
@@ -36,7 +73,7 @@ export function DataProvider({children}) {
   [])
 
   return (
-    <dataContext.Provider value={{productsData, categoriesData, wishList, setWishList}}>
+    <dataContext.Provider value={{productsData, categoriesData, wishList, setWishList, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, shoppingBag, setShoppingBag, isOnshoppingBag, setIsOnShoppingBag}}>
       {children}
     </dataContext.Provider>
   )
