@@ -48,10 +48,11 @@ export default function LogIn({history}) {
             name='inputPassword' autoComplete="true" password={formLogin.password} type="password" required />
         </div>
 
-           <button onClick={handleClick} type='submit'>Login</button>
+           <button onClick={handleClick} type='submit'>Log In</button>
+           <button className="new-user" type='submit'>New User</button>
 
       </form>
-      {wrongMessage && "Wrong password / Email. please try again"}
+      {wrongMessage && "Wrong password / Email. please try again."}
   </div>
   )
 }
