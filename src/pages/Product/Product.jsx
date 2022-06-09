@@ -4,11 +4,12 @@ import Button from "./components/Button/Button"
 import "./product.css"
 
 export default function Product({match: {params : {id}}}) {
+  
   const {
     productsData, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, 
     wishList, setWishList, shoppingBag, setShoppingBag, setIsOnShoppingBag 
   } = useData()
-  // const {productsData, handleWishList, isOnWishList, checkIfOnTheList, wishList } = useData()
+ 
   const currentProduct = productsData.filter(product => product.id === parseInt(id))
   
   useEffect(() => {
@@ -17,13 +18,6 @@ export default function Product({match: {params : {id}}}) {
     }
   }
   ,[])
-
-  // useEffect(() => {
-  //   if (currentProduct.length > 0 && wishList.length > 0) {
-  //     checkIfOnTheList(currentProduct[0].id)
-  //   }
-  // }
-  // ,[])
 
   const handleWishListClick = (e) => {
     if (currentProduct.length > 0) {
@@ -37,12 +31,6 @@ export default function Product({match: {params : {id}}}) {
       handleList(currentProduct[0].id, shoppingBag, setShoppingBag, setIsOnShoppingBag, e.target.id)
     }
   }
-
-  // const handleClick = () => {
-  //   if (currentProduct.length > 0) {
-  //     handleWishList(currentProduct[0].id)
-  //   }
-  // }
 
   const renderedProduct = () => {
     if (currentProduct.length > 0) {

@@ -15,7 +15,7 @@ export default function ShoppingBag() {
               handleClick={console.log("confirm")} 
               id="confirm"
               className="black-button"
-              text="Confirm Purchase"
+              text="Go To Checkout"
               iconName=""
               />
               </>
@@ -24,4 +24,3 @@ export default function ShoppingBag() {
       </div>
   )
  }
-
