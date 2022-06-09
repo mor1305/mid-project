@@ -34,3 +34,10 @@ a {
   font-family: 'Assistant', sans-serif;
   font-weight: bold;
 }
+
+@media (max-width: 600px) {
+  nav {
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+  }
+}

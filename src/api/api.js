@@ -12,3 +12,4 @@ export const getProducts = async () => {
     console.log(error);
   }
 };
+

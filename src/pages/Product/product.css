@@ -28,3 +28,15 @@
   gap: 1rem;
   line-height: 2rem;
 }
+
+@media (max-width: 600px) {
+  .Product {
+    flex-direction: column-reverse;
+    font-size: 0.8rem;
+    margin: 0.5rem;
+    gap: 1rem;
+  }
+ .product-info {
+    width: 60%;
+  }
+}

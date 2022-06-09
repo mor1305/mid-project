@@ -16,3 +16,10 @@ th, td {
 .remove {
   cursor: pointer;
 }
+
+
+@media (max-width: 600px) {
+  table {
+    font-size: 0.8rem;
+  }
+}

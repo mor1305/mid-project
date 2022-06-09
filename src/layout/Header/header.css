@@ -5,3 +5,15 @@
   width: 100%;
   background-color: white;
 }
+
+@media (max-width: 600px) {
+  .Header {
+
+    display: flex ;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-items: flex-end
+    ;
+  }
+}
