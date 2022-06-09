@@ -10,9 +10,21 @@ import AccountInfo from "./pages/AccountInfo/AccountInfo";
 import { useData } from "./context/Context";
 import Spinner from "./pages/Spinner/Spinner";
 import SearchResults from "./pages/SearchResults/SearchResults";
+import { useEffect } from "react";
+import { getUsers } from "./api/usersApi";
+import LogIn from "./pages/LogIn/LogIn";
 
 export default function App() {
-  const { productsData } = useData();
+  const { productsData, setUsers } = useData();
+  useEffect(() => {
+    {
+      const getUsersData = async () => {
+        const updatedUsers = await getUsers();
+        setUsers(updatedUsers);
+      };
+      getUsersData();
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -24,7 +36,8 @@ export default function App() {
           <Route path="/products/item/:id" exact component={Product} />
           <Route path="/wishlist" exact component={Wishlist} />
           <Route path="/shopping-bag" exact component={ShoppingCart} />
-          <Route path="/account-info" exact component={AccountInfo} />
+          <Route path="/log-in" exact component={LogIn} />
+          <Route path="/user-info" exact component={AccountInfo} />
           <Route path="/search-results" exact component={SearchResults} />
         </BrowserRouter>
       ) : (

@@ -1,0 +1,25 @@
+.login-form, .login-inputs {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+}
+
+.login-inputs {
+  width: 20rem;
+}
+
+.login-inputs input , .LogIn button {
+  padding:  0.5rem 1rem;
+}
+
+.LogIn button {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-family: inherit;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border-color: black;
+  width: 100%;
+}

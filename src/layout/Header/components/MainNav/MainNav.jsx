@@ -5,15 +5,22 @@ import SearchBar from "../SearchBar/SearchBar";
 
 export default function MainNav() {
 
-  const { wishList, shoppingBag} = useData()
-
+  const { wishList, shoppingBag, currentUser} = useData()
+  console.log(currentUser)
   return (
   <div className="MainNav">
       <div className="user-info">
-        <span>Welcome Mor</span>
-        <Link to="/account-info">
+        <span>Welcome {currentUser.firstName}</span>
+        {currentUser.firstName ?
+        
+        <Link to="/user-info">
          <span className="material-symbols-outlined">person</span>
-        </Link>
+        </Link> : 
+          <Link to="/log-in">
+          <span className="material-symbols-outlined">person</span>
+         </Link>
+ 
+      }
         <Link to="/wishlist">
           <span className="material-symbols-outlined">favorite</span>
           <span>{wishList.length > 0 && <>{wishList.length}</>}</span>
