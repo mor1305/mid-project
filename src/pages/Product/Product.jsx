@@ -4,17 +4,20 @@ import Button from "./components/Button/Button"
 import "./product.css"
 
 export default function Product({match: {params : {id}}}) {
-  
+
   const {
     productsData, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, 
-    wishList, setWishList, shoppingBag, setShoppingBag, setIsOnShoppingBag 
+    wishList, setWishList, shoppingBag, setShoppingBag, isOnShoppingBag, setIsOnShoppingBag 
   } = useData()
  
   const currentProduct = productsData.filter(product => product.id === parseInt(id))
   
   useEffect(() => {
-    if (currentProduct.length > 0 && wishList.length > 0) {
+    if (currentProduct.length > 0 && wishList.length > 0  ) {
       checkIfOnTheList(currentProduct[0].id, wishList, setIsOnWishList)
+    }
+    else if (currentProduct.length > 0 && shoppingBag.length > 0  ) {
+      checkIfOnTheList(currentProduct[0].id, shoppingBag, setIsOnShoppingBag)
     }
   }
   ,[])
@@ -26,7 +29,6 @@ export default function Product({match: {params : {id}}}) {
   }
 
   const handleShoppingBagClick = (e) => {
-    console.log(e.target.id);
     if (currentProduct.length > 0) {
       handleList(currentProduct[0].id, shoppingBag, setShoppingBag, setIsOnShoppingBag, e.target.id)
     }
@@ -45,6 +47,7 @@ export default function Product({match: {params : {id}}}) {
             <p>{description}</p>
             <p>SKU: {id}</p>
            </div>
+           {!isOnShoppingBag &&
            <Button 
               handleClick={handleShoppingBagClick} 
               id="shoppingBag"
@@ -52,6 +55,17 @@ export default function Product({match: {params : {id}}}) {
               text="Add To Bag"
               iconName=""
               />
+           }
+
+           {isOnShoppingBag &&
+           <Button 
+              handleClick={handleShoppingBagClick} 
+              id="shoppingBag"
+              className="black-button"
+              text="Remove From Bag"
+              iconName=""
+              />
+           }
 
            {!isOnWishList &&
               <Button 

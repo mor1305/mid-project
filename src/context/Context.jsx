@@ -14,17 +14,19 @@ export function DataProvider({children}) {
   const [wishList, setWishList] = useState([])
   const [isOnWishList, setIsOnWishList] = useState(false)
   const [shoppingBag, setShoppingBag] = useState([])
-  const [isOnshoppingBag, setIsOnShoppingBag] = useState(false)
+  const [isOnShoppingBag, setIsOnShoppingBag] = useState(false)
 
   const checkIfOnTheList = (productId, list, setIsOnList) => {
-    if (list.filter(product => parseInt(product.id) === parseInt(productId)).length ===0) {
-      setIsOnList(false)
-      return true
-    } else {
-      setIsOnList(true)
-      return false
+    if (list.length > 0) {
+      if (list.filter(product => parseInt(product.id) === parseInt(productId)).length ===0) {
+        setIsOnList(false)
+        return true
+      } else {
+        setIsOnList(true)
+        return false
+      }
     }
-  }
+    }
 
   const handleList = (productId, list, setList, setIsOnList, elementId ) => {
     // setIsOnWishList(false)
@@ -73,7 +75,7 @@ export function DataProvider({children}) {
   [])
 
   return (
-    <dataContext.Provider value={{productsData, categoriesData, wishList, setWishList, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, shoppingBag, setShoppingBag, isOnshoppingBag, setIsOnShoppingBag}}>
+    <dataContext.Provider value={{productsData, categoriesData, wishList, setWishList, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, shoppingBag, setShoppingBag, isOnShoppingBag, setIsOnShoppingBag}}>
       {children}
     </dataContext.Provider>
   )

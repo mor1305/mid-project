@@ -8,3 +8,11 @@ th, td {
   padding: 1rem;
   text-align: center;
 }
+
+#h-0, .remove {
+  background-color: white;
+}
+
+.remove {
+  cursor: pointer;
+}
