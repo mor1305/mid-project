@@ -9,6 +9,7 @@ import ShoppingCart from "./pages/ShoppingCart/ShoppingBag";
 import AccountInfo from "./pages/AccountInfo/AccountInfo";
 import { useData } from "./context/Context";
 import Spinner from "./pages/Spinner/Spinner";
+import SearchResults from "./pages/SearchResults/SearchResults";
 
 export default function App() {
   const { productsData } = useData();
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/wishlist" exact component={Wishlist} />
           <Route path="/shopping-bag" exact component={ShoppingCart} />
           <Route path="/account-info" exact component={AccountInfo} />
+          <Route path="/search-results" exact component={SearchResults} />
         </BrowserRouter>
       ) : (
         <Spinner />

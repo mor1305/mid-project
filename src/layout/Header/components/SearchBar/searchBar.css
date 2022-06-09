@@ -1,5 +1,16 @@
+form {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .input-search {
   padding: 0.5rem;
   font-family: inherit;
   width: 10rem;
+}
+
+.search {
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
 }

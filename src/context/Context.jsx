@@ -15,6 +15,7 @@ export function DataProvider({children}) {
   const [isOnWishList, setIsOnWishList] = useState(false)
   const [shoppingBag, setShoppingBag] = useState([])
   const [isOnShoppingBag, setIsOnShoppingBag] = useState(false)
+  const [inputValue, setInputValue] = useState("");
 
   const checkIfOnTheList = (productId, list, setIsOnList) => {
     if (list.length > 0) {
@@ -75,7 +76,7 @@ export function DataProvider({children}) {
   [])
 
   return (
-    <dataContext.Provider value={{productsData, categoriesData, wishList, setWishList, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, shoppingBag, setShoppingBag, isOnShoppingBag, setIsOnShoppingBag}}>
+    <dataContext.Provider value={{productsData, categoriesData, wishList, setWishList, handleList, isOnWishList, setIsOnWishList, checkIfOnTheList, shoppingBag, setShoppingBag, isOnShoppingBag, setIsOnShoppingBag, inputValue, setInputValue}}>
       {children}
     </dataContext.Provider>
   )

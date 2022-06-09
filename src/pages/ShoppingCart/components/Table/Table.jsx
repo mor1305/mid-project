@@ -7,7 +7,7 @@ const Table = ({setIsShoppingBagEmpty}) => {
 
   shoppingBag.length > 0 ? setIsShoppingBagEmpty(true) : setIsShoppingBagEmpty(false)
   
-  const header = ["", "SKU", "Title", "Price $", "QTY", "Total"];
+  const header = ["", "SKU", "Title", "Price $", "QTY", "Total $"];
 
   let totalAmount = 0
   let totalQty = 0
